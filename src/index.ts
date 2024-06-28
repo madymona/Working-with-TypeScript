@@ -1,5 +1,3 @@
-@ts-check
-
 class Vehicle {
   make: string;
   model: string;
@@ -97,11 +95,26 @@ class NCycle<T> {
 }
 
 // Test cases
-const singleNCycle = new NCycle("Yamaha", "MT-07", 2);
-singleNCycle.print(); 
-singleNCycle.printAll(); 
+const testCycle1 = new NCycle<number>(1, 2, 3);
+testCycle1.print();
+testCycle1.printAll();
 
-const multiNCycle = new NCycle(["Honda", "Kawasaki"], ["CBR500R", "Ninja 400"], 2);
-multiNCycle.print(0);
-multiNCycle.print(1); 
-multiNCycle.printAll(); 
+const testCycle2 = new NCycle<string>("This", "That", 4);
+testCycle2.print();
+testCycle2.printAll();
+
+const testCycle3 = new NCycle<string>("Make", 10 as any, 4);
+testCycle3.print(4);
+testCycle3.printAll();
+
+const makes4 = ["Volkswagon", "Tesla", "Audi"];
+const models4 = ["Passat", "Model X", "A4"];
+const testCycle4 = new NCycle<string[]>(makes4, models4, 4);
+testCycle4.print(2);
+testCycle4.printAll();
+
+const makes5 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const models5 = [1, 1, 2, 3, 5];
+const testCycle5 = new NCycle<number[]>(makes5, models5, 0);
+testCycle5.print(7);
+testCycle5.printAll();
